@@ -1,0 +1,22 @@
+node_modules/
+.env
+dist/
+coverage/
+.DS_Store
+*.log
+
+# OS/user stuff (do not commit)
+.nvm/
+.npm/
+.config/
+.vscode/
+.DS_Store
+*.log
+
+# OS/user stuff (do not commit)
+.nvm/
+.npm/
+.config/
+.vscode/
+.DS_Store
+*.log
