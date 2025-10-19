@@ -22,7 +22,7 @@ module.exports = {
   production: {
     client: "pg",
     connection: {
-      connectionString: DATABASE_URL,
+      connectionString: DATABASE_URL, // set this in Render
       ssl: DATABASE_SSL === "false" ? false : { rejectUnauthorized: false },
     },
     pool: { min: 0, max: 10 },

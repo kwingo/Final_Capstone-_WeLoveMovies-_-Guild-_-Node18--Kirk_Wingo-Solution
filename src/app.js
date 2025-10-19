@@ -22,7 +22,7 @@ app.use((req, res, next) => {
   next({ status: 404, message: `Path not found: ${req.originalUrl}` });
 });
 
-// Error handler
+// error handler
 app.use((error, req, res, next) => {
   const { status = 500, message = "Something went wrong!" } = error || {};
   res.status(status).json({ error: message });
