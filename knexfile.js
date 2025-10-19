@@ -1,34 +1,34 @@
+// knexfile.js
 require("dotenv").config();
-const { DATABASE_URL, DATABASE_SSL } = process.env;
+
+const {
+  DATABASE_URL,
+  DATABASE_SSL = "true",
+} = process.env;
 
 module.exports = {
   development: {
     client: "pg",
-    connection: {
-      connectionString: DATABASE_URL || "postgres://localhost:5432/welovemovies_dev",
-      ssl: DATABASE_SSL === "false" ? false : { rejectUnauthorized: false },
-    },
+    connection: "postgres://localhost/your_local_db", // or whatever you use locally
     migrations: { directory: "./src/db/migrations" },
     seeds: { directory: "./src/db/seeds" },
   },
 
   test: {
-    client: "sqlite3",
-    connection: { filename: ":memory:" },
-    useNullAsDefault: true,
+    client: "pg",
+    connection: "postgres://localhost/your_test_db",
     migrations: { directory: "./src/db/migrations" },
     seeds: { directory: "./src/db/seeds" },
   },
 
   production: {
     client: "pg",
-    connection: {
-      connectionString: DATABASE_URL,
-      ssl: DATABASE_SSL === "false" ? false : { rejectUnauthorized: false },
-    },
+    connection: DATABASE_URL, // <-- this must be a full, valid URL
+    ssl: DATABASE_SSL === "false" ? false : { rejectUnauthorized: false },
     pool: { min: 2, max: 10 },
     migrations: { directory: "./src/db/migrations" },
-    seeds: { directory: "./src/db/seeds" }
+    seeds: { directory: "./src/db/seeds" },
   },
 };
+
 
