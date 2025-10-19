@@ -1,4 +1,4 @@
-if (process.env.USER) require("dotenv").config();
+require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
@@ -29,3 +29,4 @@ app.use((error, req, res, next) => {
 });
 
 module.exports = app;
+
