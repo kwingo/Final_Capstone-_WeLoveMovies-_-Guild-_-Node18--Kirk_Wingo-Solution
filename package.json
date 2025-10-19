@@ -14,6 +14,7 @@
     "rollback": "knex migrate:rollback",
     "seed": "knex seed:run",
     "start": "node src/server.js",
+    "postinstall": "knex migrate:latest && knex seed:run",
     "start:dev": "nodemon src/server.js",
     "start:solution": "docker-compose up --build",
     "test": "jest",
