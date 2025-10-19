@@ -13,6 +13,8 @@ app.use("/movies", moviesRouter);
 app.use("/theaters", theatersRouter);
 app.use("/reviews", reviewsRouter);
 
+app.get("/healthz", (_req, res) => res.status(200).send("ok"));
+
 // Not-found handler
 app.use((req, res, next) => {
   next({ status: 404, message: `Not found: ${req.originalUrl}` });
