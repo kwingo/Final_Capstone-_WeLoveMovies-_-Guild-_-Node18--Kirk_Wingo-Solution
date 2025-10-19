@@ -1,4 +1,3 @@
-// src/reviews/reviews.service.js
 const knex = require("../db/connection");
 
 function list(movie_id) {
