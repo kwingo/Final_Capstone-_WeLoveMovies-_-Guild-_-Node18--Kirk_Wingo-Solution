@@ -1,3 +1,6 @@
+console.log("Knexfile commit:", process.env.RENDER_GIT_COMMIT || "local");
+
+
 require("dotenv").config();
 
 const { DATABASE_URL, DATABASE_SSL = "true" } = process.env;
@@ -13,7 +16,7 @@ module.exports = {
 
   test: {
     client: "sqlite3",
-    connection: ":memory:",
+    connection: { filename: ":memory:" },
     useNullAsDefault: true,
     migrations: { directory: "./src/db/migrations" },
     seeds: { directory: "./src/db/seeds" },
@@ -22,14 +25,15 @@ module.exports = {
   production: {
     client: "pg",
     connection: {
-      connectionString: DATABASE_URL, 
+      connectionString: DATABASE_URL,
       ssl: DATABASE_SSL === "false" ? false : { rejectUnauthorized: false },
     },
     pool: { min: 0, max: 10 },
-    migrations: { directory: "src/db/migrations" },
-    seeds: { directory: "src/db/seeds" },
+    migrations: { directory: "./src/db/migrations" },
+    seeds: { directory: "./src/db/seeds" },
   },
 };
+
 
 
 
