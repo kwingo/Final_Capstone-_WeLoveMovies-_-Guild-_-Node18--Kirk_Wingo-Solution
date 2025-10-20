@@ -21,21 +21,22 @@ app.get("/", (_req, res) => {
   });
 });
 
-// routes
+ // Routes
 app.use("/movies", moviesRouter);
 app.use("/theaters", theatersRouter);
 app.use("/reviews", reviewsRouter);
 
-// 404
+// 404 handler
 app.use((req, res, next) => {
   next({ status: 404, message: `Path not found: ${req.originalUrl}` });
 });
 
 // Error handler
-app.use((err, req, res, next) => {
+app.use((err, req, res, _next) => {
   const { status = 500, message = "Something went wrong!" } = err || {};
   res.status(status).json({ error: message });
 });
 
 module.exports = app;
+
 
