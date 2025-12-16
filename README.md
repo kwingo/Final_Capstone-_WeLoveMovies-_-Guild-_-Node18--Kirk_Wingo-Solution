@@ -24,5 +24,5 @@ Category	Technologies
 Backend	Node.js, Express
 Database	PostgreSQL, Knex.js
 Testing	Jest, Supertest
-Deployment	Render / Heroku (or your platform)
+Deployment	Render / Heroku
 Other	CORS, dotenv, REST API architecture
